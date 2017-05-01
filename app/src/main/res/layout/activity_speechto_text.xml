@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_speechto_text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.cristian.healthapp.SpeechtoText">
+
+    <TextView
+        android:text="@string/emptystr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:id="@+id/TVresult"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignStart="@+id/imageButton"
+        android:layout_marginLeft="52dp"
+        android:layout_marginStart="52dp" />
+
+    <ImageButton
+        app:srcCompat="@drawable/microphone_search"
+        android:id="@+id/imageButton"
+        android:layout_marginBottom="66dp"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonClick" />
+
+    <TextView
+        android:text="toca el microfono para empezar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:id="@+id/textView2"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/watsonResp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        android:scrollbars="vertical"
+        android:gravity="fill_horizontal|left"
+        android:longClickable="false"
+        android:textAlignment="textStart"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/txtSpeechInput"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:maxHeight="80dp"
+        android:maxLines="20"
+        android:layout_alignParentRight="false" />
+
+</RelativeLayout>

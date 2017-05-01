@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HealthApp2-3a98f505c11e228af6832e67ae73f8078a048ecf.iml" filepath="$PROJECT_DIR$/HealthApp2-3a98f505c11e228af6832e67ae73f8078a048ecf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HealthAppF-master.iml" filepath="$PROJECT_DIR$/HealthAppF-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>
