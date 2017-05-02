@@ -9,23 +9,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
-import com.ibm.watson.developer_cloud.http.RequestBuilder;
-import com.ibm.watson.developer_cloud.http.ServiceCall;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalysisResults;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalyzeOptions;
-import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.ListModelsResults;
-import com.ibm.watson.developer_cloud.service.WatsonService;
-import com.ibm.watson.developer_cloud.util.GsonSingleton;
-import com.ibm.watson.developer_cloud.util.ResponseConverterUtils;
-import com.ibm.watson.developer_cloud.util.Validator;
-
 import java.util.ArrayList;
 import java.util.Locale;
 
 //import com.ibm.watson.developer_cloud.dialog.v1.model.Conversation;
 
-public class SpeechtoText extends AppCompatActivity {
+public class SpeechtoText extends AppCompatActivity  {
 
 
 
@@ -33,6 +22,15 @@ public class SpeechtoText extends AppCompatActivity {
     private TextView watsonResp;
     private String text;
     // private Conversation service;
+    NaturalLanguageUnderstanding service = new NaturalLanguageUnderstanding(
+            NaturalLanguageUnderstanding.VERSION_DATE_2017_02_27,
+            "e431d06f-091e-45df-b7b0-eb80ade5de83",
+            "XZ4lshXtyhuR"
+    );
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +80,7 @@ public class SpeechtoText extends AppCompatActivity {
                 break;
         }
     }
+
 
 
 
