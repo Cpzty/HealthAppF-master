@@ -101,4 +101,6 @@ public class NaturalLanguageUnderstanding extends WatsonService {
         return createServiceCall(builder.build(), ResponseConverterUtils.getObject(ListModelsResults.class));
     }
 
+
+
 }

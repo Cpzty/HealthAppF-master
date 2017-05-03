@@ -6,8 +6,14 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalysisResults;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalyzeOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.EntitiesOptions;
+import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.Features;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -21,6 +27,7 @@ public class SpeechtoText extends AppCompatActivity  {
     private  TextView resultTEXT;
     private TextView watsonResp;
     private String text;
+    private Button btnResponse;
     // private Conversation service;
     NaturalLanguageUnderstanding service = new NaturalLanguageUnderstanding(
             NaturalLanguageUnderstanding.VERSION_DATE_2017_02_27,
@@ -41,6 +48,7 @@ public class SpeechtoText extends AppCompatActivity  {
 //        service.setClientId("username", "password");
 //        service.set(QuestionAndAnswerDataset.TRAVEL);
         resultTEXT =  (TextView)findViewById(R.id.TVresult);
+        btnResponse = (Button)findViewById(R.id.btnAnalizar);
     }
 
     public void onButtonClick(View v){
@@ -51,6 +59,23 @@ public class SpeechtoText extends AppCompatActivity  {
             promptSpeechInput();
 
         }
+
+        if(v.getId()==R.id.btnAnalyze){
+
+            EntitiesOptions entities = new EntitiesOptions.Builder().sentiment(true).limit(1).build();
+            Features features = new Features.Builder().entities(entities).build();
+            AnalyzeOptions parameters = new AnalyzeOptions.Builder()
+                    .text(resultTEXT.toString())
+                    .features(features)
+                    .build();
+            AnalysisResults results = service.analyze(parameters).execute();
+            resultTEXT.setText(results.toString());
+
+
+
+        }
+
+
 
     }
 
@@ -80,6 +105,9 @@ public class SpeechtoText extends AppCompatActivity  {
                 break;
         }
     }
+
+
+
 
 
 
