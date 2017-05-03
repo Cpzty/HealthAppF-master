@@ -2,6 +2,7 @@ package com.example.cristian.healthapp;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,9 @@ public class SpeechtoText extends AppCompatActivity  {
 
 
 
-    private  TextView resultTEXT;
+
+
+    public   TextView resultTEXT;
     private TextView watsonResp;
     private String text;
     private Button btnResponse;
@@ -61,15 +64,26 @@ public class SpeechtoText extends AppCompatActivity  {
         }
 
         if(v.getId()==R.id.btnAnalyze){
+            resultTEXT.setText("Alahu akbar");
+            class NL extends AsyncTask<Void,Void,String> {
+                @Override
+                protected String doInBackground(Void... params) {
+                    EntitiesOptions entities = new EntitiesOptions.Builder().sentiment(true).limit(1).build();
+                    Features features = new Features.Builder().entities(entities).build();
+                    AnalyzeOptions parameters = new AnalyzeOptions.Builder()
+                            .text(resultTEXT.toString())
+                            .features(features)
+                            .build();
+                    AnalysisResults results = service.analyze(parameters).execute();
+                    return results.toString();
+                }
+                
 
-            EntitiesOptions entities = new EntitiesOptions.Builder().sentiment(true).limit(1).build();
-            Features features = new Features.Builder().entities(entities).build();
-            AnalyzeOptions parameters = new AnalyzeOptions.Builder()
-                    .text(resultTEXT.toString())
-                    .features(features)
-                    .build();
-            AnalysisResults results = service.analyze(parameters).execute();
-            resultTEXT.setText(results.toString());
+                @Override
+                protected void onPostExecute(String s){resultTEXT.setText(s);}
+            }
+
+
 
 
 

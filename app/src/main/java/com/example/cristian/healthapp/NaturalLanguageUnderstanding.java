@@ -11,7 +11,7 @@ import com.ibm.watson.developer_cloud.util.GsonSingleton;
 import com.ibm.watson.developer_cloud.util.ResponseConverterUtils;
 import com.ibm.watson.developer_cloud.util.Validator;
 
-public class NaturalLanguageUnderstanding extends WatsonService {
+public class NaturalLanguageUnderstanding extends WatsonService  {
 
     private static final String SERVICE_NAME = "natural_language_understanding";
     private static final String URL = "https://gateway.watsonplatform.net/natural-language-understanding/api";
