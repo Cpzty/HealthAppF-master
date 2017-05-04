@@ -99,34 +99,6 @@ public class SpeechtoText extends AppCompatActivity {
 
         }
 
-        if(v.getId()==R.id.btnAnalyze){
-            class Llamada extends AsyncTask<Void, Void, String>{
-                @Override
-                protected String doInBackground(Void... params) {
-                    NaturalLanguageUnderstanding service = new NaturalLanguageUnderstanding(
-                            NaturalLanguageUnderstanding.VERSION_DATE_2017_02_27,
-                            "e431d06f-091e-45df-b7b0-eb80ade5de83",
-                            "XZ4lshXtyhuR"
-                    );
-                    service.setEndPoint("https://gateway.watsonplatform.net/natural-language-undesrtanding/api");
-                    EntitiesOptions entities = new EntitiesOptions.Builder().sentiment(true).limit(1).build();
-                    Features features = new Features.Builder().entities(entities).build();
-                    AnalyzeOptions parameters = new AnalyzeOptions.Builder()
-                            .text(result.get(0))
-                            .features(features)
-                            .build();
-                    AnalysisResults results = service.analyze(parameters).execute();
-                    return results.toString();
-                }
-
-                @Override
-                protected void onPostExecute(String st){
-                    resultTEXT.setText(st);
-                }
-        }
-
-        }
-
     }
 
     public void onActivityResult(int request_code, int result_code, Intent i){
