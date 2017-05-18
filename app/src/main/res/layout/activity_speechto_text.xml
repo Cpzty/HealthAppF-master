@@ -12,16 +12,15 @@
     tools:context="com.example.cristian.healthapp.SpeechtoText">
 
     <TextView
-        android:text="@string/emptystr"
+        android:id="@+id/TVresult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:id="@+id/TVresult"
-        android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/imageButton"
+        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/imageButton"
         android:layout_marginLeft="52dp"
-        android:layout_marginStart="52dp" />
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="34dp" />
 
     <ImageButton
         app:srcCompat="@drawable/microphone_search"
@@ -66,10 +65,21 @@
         android:id="@+id/btnAnalyze"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="48dp"
         android:onClick="onButtonClick"
-        android:text="Analyze" />
+        android:text="Analyze"
+        android:layout_above="@+id/imageButton"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btnguardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnAnalyze"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_alignRight="@+id/textView2"
+        android:onClick="onButtonClick"
+        android:text="Code" />
 
 </RelativeLayout>

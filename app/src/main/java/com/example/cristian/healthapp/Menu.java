@@ -23,6 +23,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
 
         botonAnalizar = (Button) findViewById(R.id.btnAnalizar);
         botonAnalizar.setOnClickListener(this);
+
     }
 
     @Override
