@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class SpeechtoText extends AppCompatActivity  {
 
-
+    // atributos de la clase
     public  TextView resultTEXT;
     ArrayList<String> result;
     String respuestaEnfermedad;
@@ -47,15 +47,17 @@ public class SpeechtoText extends AppCompatActivity  {
             NaturalLanguageUnderstanding.VERSION_DATE_2017_02_27,
             //"e47f7720-a590-4c09-a8bd-b4d8f1edc7e7",
             //"Xqo4KfXFnutA"
-            "e431d06f-091e-45df-b7b0-eb80ade5de83",
-           "XZ4lshXtyhuR"
+            "e431d06f-091e-45df-b7b0-eb80ade5de83",   //usuario
+           "XZ4lshXtyhuR"                             //contrasena
     );
 
+    // al inicio de la activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speechto_text);
 
+        //Instanciar objetos
         resultTEXT =  (TextView)findViewById(R.id.TVresult);
         btnResponse = (Button)findViewById(R.id.btnAnalizar);
     }
@@ -72,6 +74,7 @@ public class SpeechtoText extends AppCompatActivity  {
             AnalyzeOptions parameters = new AnalyzeOptions.Builder().text(result.get(0)).features(features).build();
             AnalysisResults results = service.analyze(parameters).execute();
             String x = results.toString();
+            // Parseo de la respuesta
             JSONObject c;
             JSONArray consulta=null;
             try {
@@ -94,7 +97,7 @@ public class SpeechtoText extends AppCompatActivity  {
             }
 
         }
-
+        //Despliegue de la respuesta
         @Override
         protected void onPostExecute(String s) {
             respuestaEnfermedad = s;
@@ -103,6 +106,7 @@ public class SpeechtoText extends AppCompatActivity  {
         }
     }
 
+    // Servicio con google
     public void promptSpeechInput(){
 
         Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -117,6 +121,7 @@ public class SpeechtoText extends AppCompatActivity  {
         }
     }
 
+    //Colocar en texto lo que la persona dijo
     public void onActivityResult(int request_code, int result_code, Intent i){
         super.onActivityResult(request_code,result_code,i);
 
@@ -133,8 +138,10 @@ public class SpeechtoText extends AppCompatActivity  {
         }
     }
 
+    // Funcionalidad de los botones
     public void onButtonClick(View v){
 
+        // Click en el boton de la imagen corre la funcion promptSpeechInput()
         if(v.getId() == R.id.imageButton){
 
 
@@ -142,10 +149,12 @@ public class SpeechtoText extends AppCompatActivity  {
 
         }
 
+        // en el boton analizar hace la llamada a watson
         if(v.getId()==R.id.btnAnalyze){
             new CallWatson().execute();
 
         }
+        // Realiza la llamada a la base de datos
         if(v.getId()==R.id.btnguardar){
             String normalized = Normalizer.normalize(traslado, Normalizer.Form.NFD);
             normalized.replaceAll("[^\\p{ASCII}]", "");
@@ -158,7 +167,7 @@ public class SpeechtoText extends AppCompatActivity  {
             
 
 
-
+            // Intent, traslado del dato de la enfermedad a la otra activity
             Intent int1 = new Intent(SpeechtoText.this,AnalizarGrab.class);
             int1.putExtra("enfermedad",normalized);
             Log.d("traslado", traslado);
